@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大尺寸广告图展示</title>
+    <style type="text/css">
+    	canvas{
+    		vertical-align: top;
+    	}
+    </style>
+  </head>
+  <body>
+  	
+    <div id="ad1" style="width:400px;height:400px;overflow:hidden">
+      <!-- 请自行添加canvas元素 -->
+      	
+    </div>
+    <div id="ad2" style="width:500px;height:700px;overflow:hidden">
+    	
+    </div>
+    <script>
+      function drawLargeImage($container, imageSrc) {
+        // 请补充方法体
+        var img= new Image();
+			img.src = imageSrc;
+
+			img.onload = function() {
+				var w =  img.width;
+				var h =  img.height;
+
+				$container.style.width = w + 'px';
+				$container.style.height = h + 'px';
+
+				var large = 40000;
+				var total = w*h;
+				
+
+				if( total <= large ){
+					var c=document.createElement("canvas");
+					var ctx=c.getContext("2d");
+					
+					c.width = w;
+					c.height =h;
+					
+					ctx.drawImage(img,0,0);
+					$container.appendChild(c);
+				}else{
+					var max = Math.sqrt(large);
+					
+					// 两种情况
+					// 宽高都大于max
+					// 宽高其中一个大于max
+					var high = Math.max(w,h);
+					var low = Math.min(w,h);
+					var size = Math.floor(large/low);
+					var len = Math.round(high / size);
+			
+					
+					for(var i = 0;i< len; i++){
+							var c=document.createElement("canvas");
+							var ctx=c.getContext("2d");
+							if(w == high){
+								 c.width = w -size*i < size ? w -size*i : size;
+								 c.height = h;
+								 console.log(w)
+								 ctx.drawImage(img,-i*size,0);
+							}else{
+								 c.width = w;
+								 c.height = h -size*i < size ? h -size*i : size;
+								
+								 ctx.drawImage(img,0,-size*i);
+							}
+							
+							$container.appendChild(c);
+							
+					}
+				}
+			} 
+      }
+      drawLargeImage(document.getElementById('ad1'), 'https://gw.alicdn.com/tfs/TB163pKdMmTBuNjy1XbXXaMrVXa-400-400.jpg');
+      drawLargeImage(document.getElementById('ad2'), 'https://gw.alicdn.com/tfs/TB1EaOddKuSBuNjy1XcXXcYjFXa-500-700.jpg');
+
+
+    </script>
+  </body>
+</html>
