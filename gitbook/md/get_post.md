@@ -1,6 +1,6 @@
 # get和post的区别
 
-语义上来讲
+## 语义上来讲
 http://www.w3school.com.cn/tags/html_ref_httpmethods.asp
 
 GET在浏览器回退时是无害的，而POST会再次提交请求。
@@ -21,7 +21,7 @@ GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来�
 
 GET参数通过URL传递，POST放在Request body中。
 
-实际传输过程上也有一点区别
+## 实际传输过程上也有一点区别
 
 对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；
 
