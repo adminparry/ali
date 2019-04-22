@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>encode · GitBook</title>
+        <title>闭包 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="closure.html" />
+    <link rel="next" href="box_sizing.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="encode.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="encode.html">
+        <li class="chapter " data-level="1.2" data-path="encode.html">
             
                 <a href="encode.html">
             
@@ -115,7 +115,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="closure.html">
+        <li class="chapter active" data-level="1.3" data-path="closure.html">
             
                 <a href="closure.html">
             
@@ -223,7 +223,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >encode</a>
+        <a href=".." >闭包</a>
     </h1>
 </div>
 
@@ -238,25 +238,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5173;&#x4E8E;&#x89E3;&#x7801;&#x95EE;&#x9898;">&#x5173;&#x4E8E;&#x89E3;&#x7801;&#x95EE;&#x9898;</h1>
-<p>&#x6C34;&#x6EF4;&#x4E92;&#x52A9;</p>
-<p>&#x9898;&#x76EE;</p>
-<p>&#x4ECE;&#x4E00;&#x4E2A;&#x672A;&#x77E5;&#x88AB;&#x7F16;&#x7801;&#x591A;&#x5C11;&#x6B21;&#x7684;url&#x89E3;&#x51FA;&#x6700;&#x539F;&#x59CB;&#x7684;url</p>
-<p>&#x4F8B;&#x5982; &quot;<a href="https://www.baidu.com/?wd=%252525E6%25252588%25252591%252525E6%25252598%252525AF" target="_blank">https://www.baidu.com/?wd=%252525E6%25252588%25252591%252525E6%25252598%252525AF</a>&quot;</p>
-<p>&#x6211;&#x7684;&#x5370;&#x8C61;&#x4E2D;&#x662F;&#x88AB;&#x7F16;&#x7801;&#x591A;&#x5C11;&#x6B21;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684; &#x53EF;&#x5B9E;&#x9645;&#x4E0A;&#x786E;&#x5B9E;&#x4E0D;&#x662F; &#x8BF4;&#x660E;&#x4EBA;&#x7684;&#x5370;&#x8C61;&#x662F;&#x4E0D;&#x51C6;&#x786E;&#x7684; &#x7136;&#x800C;&#x8111;&#x5B50;&#x4E2D;&#x8FD8;&#x98D8;&#x8FC7;&#x4E00;&#x4E2A;%25</p>
-<p>&#x4F46;&#x662F;&#x6211;&#x9762;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#x4ECD;&#x7136;&#x662F;&#x6309;&#x7167;&#x5370;&#x8C61;&#x6765;&#x7B54;&#x7684; &#x56DE;&#x6765;&#x7684;&#x65F6;&#x5019;&#x987A;&#x4FBF;&#x770B;&#x4E86;&#x4E0B;</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> url = <span class="hljs-string">&quot;https://www.baidu.com/?wd=%252525E6%25252588%25252591%252525E6%25252598%252525AF&quot;</span>;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decode</span>(<span class="hljs-params">str</span>)</span>{
-    <span class="hljs-keyword">if</span>(str.indexOf(<span class="hljs-string">&quot;%25&quot;</span>) &gt; <span class="hljs-number">-1</span>){
-        <span class="hljs-keyword">return</span> decode(<span class="hljs-built_in">decodeURI</span>(str))
+                                <h1 id="&#x5173;&#x4E8E;&#x95ED;&#x5305;&#x7684;&#x95EE;&#x9898;">&#x5173;&#x4E8E;&#x95ED;&#x5305;&#x7684;&#x95EE;&#x9898;</h1>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">5</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">9</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        a = <span class="hljs-number">7</span>;
     }
-
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">decodeURI</span>(str);
 }
+foo()();
 
-<span class="hljs-built_in">console</span>.log(decode(url))
+<span class="hljs-built_in">console</span>.log(a);
 </code></pre>
+<p>&#x90A3;&#x4E48;a&#x7684;&#x8BDD;&#x80AF;&#x5B9A;&#x662F;&#x4E2A;5</p>
 
                                 
                                 </section>
@@ -284,12 +278,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="encode.html" class="navigation navigation-prev " aria-label="Previous page: encode">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="closure.html" class="navigation navigation-next " aria-label="Next page: 闭包">
+                <a href="box_sizing.html" class="navigation navigation-next " aria-label="Next page: box-sizing">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -300,7 +294,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"encode","level":"1.2","depth":1,"next":{"title":"闭包","level":"1.3","depth":1,"path":"md/closure.md","ref":"./md/closure.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"md/encode.md","mtime":"2019-04-22T05:05:53.065Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T06:08:37.083Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"闭包","level":"1.3","depth":1,"next":{"title":"box-sizing","level":"1.4","depth":1,"path":"md/box_sizing.md","ref":"./md/box_sizing.md","articles":[]},"previous":{"title":"encode","level":"1.2","depth":1,"path":"md/encode.md","ref":"./md/encode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"md/closure.md","mtime":"2019-04-22T05:14:05.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-22T06:08:37.083Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
