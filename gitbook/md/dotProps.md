@@ -37,21 +37,27 @@ function get(obj, path, defaultVal){
 
 ``` javascript
 
-function get(obj, path, defaultVal){
+function get(obj, path, defaultVal, fn){
 	var pathList = path.split("."),
 		len = pathList.length,
 		index = 0,
-		ret = obj[pathList[index]];
-	
-	while(ret && index < len - 1){
+		ret = null;
+
+	while(index < len ){
 		
-			index++
-			ret = ret[pathList[index]];
-	
-		
+		var props = pathList[index++];
+		var object = ret || obj;
+
+		if(Object.hasOwnProperty.call(object, props)){
+			ret = object[props]
+		}else{
+			ret = defaultVal;
+			fn && fn();
+		}
+			
 	}
 
-	return ret || defaultVal;
+	return ret;
 }
 
 ```
