@@ -21,5 +21,6 @@
 * [变量提升](./md/yiti/var.md)
 * [react-diff](./md/reactDiff.md)
 * [单链表js](./md/yiti/linkList.md)
+* [new的实现](./md/new.md)
 
 
