@@ -1,0 +1,21 @@
+{
+  "name": "ali",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "gh-pages -d gitbook/_book"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adminparry/ali.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adminparry/ali/issues"
+  },
+  "homepage": "https://github.com/adminparry/ali#readme"
+}
